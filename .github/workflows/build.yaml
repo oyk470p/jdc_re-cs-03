@@ -12,7 +12,7 @@ on:
 
 env:
   REMOTE_REPOSITORY: openwrt/openwrt
-  REMOTE_BRANCH: openwrt-25.12
+  REMOTE_BRANCH: main
   CONFIG_FILE: re-cs-03.config
   CUSTOM_FILES_PATH: files/
   RELEASE_PREFIX: main
