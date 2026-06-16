@@ -84,7 +84,7 @@ jobs:
           git clone https://github.com/Openwrt-Passwall/openwrt-passwall-packages.git package/utils/passwall
           git clone https://github.com/vernesong/OpenClash.git package/feeds/luci/luci-app-openclash
           git clone https://github.com/eamonxg/luci-theme-aurora.git package/feeds/luci/luci-theme-aurora
-          git clone https://github.com/jerrykuku/eamonxg/luci-app-aurora-config.git package/feeds/luci/luci-app-aurora-config
+          git clone https://github.com/eamonxg/luci-app-aurora-config.git package/feeds/luci/luci-app-aurora-config
           unzip builder_repo/luci-app-accesscontrol.zip -d package/feeds/luci/applications
 
       - name: Setup configuration and custom files
