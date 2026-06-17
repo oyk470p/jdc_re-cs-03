@@ -3,13 +3,13 @@ index 18fae054d4..29ade5ea0b 100755
 --- a/package/base-files/files/bin/config_generate
 +++ b/package/base-files/files/bin/config_generate
 @@ -163,7 +163,7 @@ generate_network() {
- 	     	static)
-            local ipad netm prefix
-            case "$1" in
--			           	lan) ipad=${ipaddr:-"192.168.1.1"} ;;
-+				           lan) ipad=${ipaddr:-"192.168.68.1"} ;;
- 			           	*) ipad=${ipaddr:-"192.168.$((addr_offset++)).1"} ;;
- 			        esac
+ static)
+ 	local ipad netm prefix
+ 	case "$1" in
+-		lan) ipad=${ipaddr:-"192.168.1.1"} ;;
++		lan) ipad=${ipaddr:-"192.168.68.1"} ;;
+ 			*) ipad=${ipaddr:-"192.168.$((addr_offset++)).1"} ;;
+ 	esac
 @@ -313,9 +313,9 @@ generate_static_system() {
  	uci -q batch <<-EOF
  		delete system.@system[0]
@@ -40,7 +40,7 @@ index d4169fa663..41cffddd79 100644
  	ubootenv_add_mtd "0:APPSBLENV" "0x0" "0x10000" "0x10000"
  	;;
 +jdcloud,re-cs-03)
-+	ubootenv_add_uci_config "0:APPSBLENV" "0x0" "0x40000" "0x10000"
++	ubootenv_add_uci_config "/dev/mmcblk0p10" "0x0" "0x40000" "0x10000"
 +	;;
  esac
  
