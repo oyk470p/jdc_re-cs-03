@@ -79,7 +79,12 @@ jobs:
       - name: Update and install feeds
         run: |
           df -hT
-          ./scripts/feeds update -a && ./scripts/feeds install -a -p luci && ./scripts/feeds install -a -p packages
+          echo 'src-git istore https://github.com/linkease/istore;main' >> feeds.conf.default
+          echo 'src-git nas https://github.com/linkease/nas-packages.git;master' >> feeds.conf.default
+          echo 'src-git nas_luci https://github.com/linkease/nas-packages-luci.git;main' >> feeds.conf.default
+          
+          ./scripts/feeds update -a
+          ./scripts/feeds install -a
           git clone https://github.com/Openwrt-Passwall/openwrt-passwall.git package/feeds/luci/luci-app-passwall
           git clone https://github.com/Openwrt-Passwall/openwrt-passwall-packages.git package/utils/passwall
           git clone https://github.com/vernesong/OpenClash.git package/feeds/luci/luci-app-openclash
