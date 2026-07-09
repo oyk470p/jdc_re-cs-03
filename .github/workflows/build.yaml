@@ -79,8 +79,7 @@ jobs:
       - name: Update and install feeds
         run: |
           df -hT
-          echo 'src-git istore https://github.com/linkease/istore;main' >> feeds.conf.default
-          ./scripts/feeds update -a && ./scripts/feeds install -a -p luci && ./scripts/feeds install -a -p packages && ./scripts/feeds install -a -p istore          
+          ./scripts/feeds update -a && ./scripts/feeds install -a -p luci && ./scripts/feeds install -a -p packages          
           git clone https://github.com/Openwrt-Passwall/openwrt-passwall.git package/feeds/luci/luci-app-passwall
           git clone https://github.com/Openwrt-Passwall/openwrt-passwall-packages.git package/utils/passwall
           git clone https://github.com/vernesong/OpenClash.git package/feeds/luci/luci-app-openclash
