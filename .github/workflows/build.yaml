@@ -1,4 +1,4 @@
-name: Build OpenWrt for specific target and release
+name: 京东云AX3000固件编译
 
 permissions:
   contents: write
