@@ -424,7 +424,7 @@ new file mode 100644
 index 0000000000..16d465448d
 --- /dev/null
 +++ b/target/linux/qualcommax/dts/ipq5018-re-cs-03.dts
-@@ -0,0 +1,386 @@
+@@ -0,0 +1,371 @@
 +/dts-v1/;
 +
 +#include "ipq5018.dtsi"
@@ -446,9 +446,9 @@ index 0000000000..16d465448d
 +		led-upgrade = &led_system_red;
 +		serial0 = &blsp1_uart1;
 +		sdhc1 = &sdhc_1;
-+		ethernet0 = &dp1;
-+		ethernet1 = &dp2;
-+		label-mac-device = &dp2;
++		ethernet0 = &gmac0;
++		ethernet1 = &gmac1;
++		label-mac-device = &gmac1;
 +	};
 +
 +	chosen {
@@ -637,36 +637,22 @@ index 0000000000..16d465448d
 + * ===============================================================
 + */
 +
-+ &switch {
++ &uniphy0 {
 +	status = "okay";
 +
-+	switch_mac_mode = <MAC_MODE_SGMII_CHANNEL0>;
-+
-+	qcom,port_phyinfo {
-+		// MAC0 -> GE Phy -> QCA8337 Phy4
-+		port@0 {
-+			port_id = <1>;
-+			mdiobus = <&mdio0>;
-+			phy_address = <7>;
-+		};
-+
-+		// MAC1 ---SGMII---> QCA8337 SerDes
-+		port@1 {
-+			port_id = <2>;
-+			forced-speed = <1000>;
-+			forced-duplex = <1>;
-+		};
-+	};
++ 	assigned-clocks = <&uniphy0 UNIPHY_CLK_REF>;
++ 	assigned-clock-rates = <UNIPHY_REFCLK_50MHZ>;
 +};
 +
-+&dp1 {
++&gmac0 {
 +	label = "wan";
 +	status = "okay";
 +};
 +
 +// MAC1 ---SGMII---> QCA8337 SerDes
-+&dp2 {
++&gmac1 {
 +	status = "okay";
++ 	phy-mode = "sgmii";
 +
 +	fixed-link {
 +		speed = <1000>;
@@ -748,7 +734,7 @@ index 0000000000..16d465448d
 +				reg = <6>;
 +				label = "cpu";
 +				phy-mode = "sgmii";
-+				ethernet = <&dp2>;
++				ethernet = <&gmac1>;
 +				qca,sgmii-enable-pll;
 +
 +				fixed-link {
@@ -810,7 +796,6 @@ index 0000000000..16d465448d
 +	qcom,bdf-addr = <0x4d100000>;
 +	qcom,m3-dump-addr = <0x4df00000>;
 +};
-+
 diff --git a/target/linux/qualcommax/image/ipq50xx.mk b/target/linux/qualcommax/image/ipq50xx.mk
 index 6a6a50d6f7..f2b9ce69d7 100644
 --- a/target/linux/qualcommax/image/ipq50xx.mk
