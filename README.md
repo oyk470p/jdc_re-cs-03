@@ -69,14 +69,3 @@ setenv serverip 192.168.1.11
 setenv ipaddr 192.168.1.2
 tftpboot 0x44000000 openwrt-qualcommax-ipq50xx-jdcloud_re-cs-03-initramfs-uImage.itb
 bootm 0x44000000
-```
-</details>
-
-## 鼓励一下
-
-如果你从本项目中受益，欢迎捐赠一杯咖啡 ☕。  
-这不仅是对我持续维护的动力，也让开源精神得以延续。
-
-| 微信支付  | 支付宝 |
-| ------------- | ------------- |
-| ![](images/wx.png)  | ![](images/ali.png) |
