@@ -34,9 +34,9 @@ index d4169fa663..41cffddd79 100644
 +jdcloud,re-cs-03)
 +	ubootenv_add_uci_config "/dev/mmcblk0p10" "0x0" "0x40000" "0x10000"
 +	;;
- esac
- 
- config_load ubootenv
+ xiaomi,ax6000|\
+ xiaomi,mi-router-ax3000t-v2|\
+ xiaomi,redmi-ax5400)
 diff --git a/package/firmware/ipq-wifi/Makefile b/package/firmware/ipq-wifi/Makefile
 index 47b2f8788b..3076eb7ff4 100644
 --- a/package/firmware/ipq-wifi/Makefile
@@ -60,7 +60,7 @@ index 47b2f8788b..3076eb7ff4 100644
 +	jdcloud_re-cs-03 \
  	link_nn6000 \
  	linksys_homewrk \
- 	linksys_mr5500 \
+ 	linksys_mr2000 \
 @@ -225,6 +231,7 @@ $(eval $(call generate-ipq-wifi-package,glinet_gl-axt1800,GL.iNet GL-AXT1800))
  $(eval $(call generate-ipq-wifi-package,iodata_wn-dax3000gr,I-O DATA WN-DAX3000GR))
  $(eval $(call generate-ipq-wifi-package,jdcloud_re-cs-02,JDCloud RE-CS-02))
@@ -863,9 +863,9 @@ index c34aadf7d4..7ab58be257 100644
 +		#caldata_extract_mmc "0:ART" 0x4c000 0x20000
 +		ath11k_remove_regdomain
 +		;;
+ 	linksys,mr2000|\
  	linksys,mx2000)
  		caldata_extract "0:art" 0x26800 0x20000
- 		label_mac=$(mtd_get_mac_ascii devinfo hw_mac_addr)
 diff --git a/target/linux/qualcommax/ipq50xx/base-files/etc/hotplug.d/ieee80211/05-wifi-migrate b/target/linux/qualcommax/ipq50xx/base-files/etc/hotplug.d/ieee80211/05-wifi-migrate
 index d3460db582..628faf38fd 100644
 --- a/target/linux/qualcommax/ipq50xx/base-files/etc/hotplug.d/ieee80211/05-wifi-migrate
